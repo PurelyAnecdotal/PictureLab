@@ -100,29 +100,28 @@ public class PictureTester {
     }
 
     private static void testKeepOnlyBlue() {
-        // should get a fairly blue pic
-        // this method will look a lot like testZeroBlue method
-        Picture beach = new Picture("beach.jpg");// You would change the var name and file name to your picture when you
-                                                 // are testing your image.
-        Picture sBeach = beach.scale(0.5, 0.5);// scales the size down if you need to resize.
-        sBeach.write("sBeach.jpg");
-        // Code below is necessary to make your image smaller if you took it from your
-        // camera.
+        Picture beach = new Picture("beach.jpg").scale(0.5, 0.5);
 
-        sBeach.explore();// shows the picture in a window
-        sBeach.keepOnlyBlue();// Calls your keep only blue method
-        sBeach.explore();// shows a new picture with only blue hues
+        beach.explore();// shows the picture in a window
+        beach.keepOnlyBlue();// Calls your keep only blue method
+        beach.explore();// shows a new picture with only blue hues
 
     }
 
     private static void testKeepOnlyGreen() {
-        // pretty obvious...
+        Picture beach = new Picture("beach.jpg").scale(0.5, 0.5);
 
+        beach.explore();
+        beach.keepOnlyGreen();
+        beach.explore();
     }
 
     private static void testKeepOnlyRed() {
-        // turns the pic quite red
+        Picture beach = new Picture("beach.jpg").scale(0.5, 0.5);
 
+        beach.explore();
+        beach.keepOnlyRed();
+        beach.explore();
     }
 
     /**
@@ -131,7 +130,7 @@ public class PictureTester {
      * used often, we can write these algorithms in this class.
      */
     private static void testNegate() {
-        Picture swan = new Picture("swan.jpg");
+        Picture swan = new Picture("scenic.jpg").scale(0.5, 0.5);
         // write this in Picture class
         swan.negate();
         swan.explore();
@@ -143,7 +142,7 @@ public class PictureTester {
      * to the Picture class.
      */
     private static void testGrayscale() {
-        Picture swan = new Picture("swan.jpg");
+        Picture swan = new Picture("scenic.jpg").scale(0.5, 0.5);
         // write this method in Picture class
         swan.grayScale();
         swan.explore();

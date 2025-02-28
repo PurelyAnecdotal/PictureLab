@@ -90,7 +90,14 @@ public class Picture extends SimplePicture {
 	 * negated color red = 225, green= 155, blue = 55
 	 */
 	public void negate() {
-
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				pixel.setRed(255 - pixel.getRed());
+				pixel.setGreen(255 - pixel.getGreen());
+				pixel.setBlue(255 - pixel.getBlue());
+			}
+		}
 	}
 
 	/**
@@ -99,7 +106,15 @@ public class Picture extends SimplePicture {
 	 * and blue components and set each component to that average
 	 */
 	public void grayScale() {
-
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				int avg = (int) pixel.getAverage();
+				pixel.setRed(avg);
+				pixel.setGreen(avg);
+				pixel.setBlue(avg);
+			}
+		}
 	}
 
 	/**
@@ -110,14 +125,36 @@ public class Picture extends SimplePicture {
 
 	}
 
+	public void keepOnlyRed() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				pixel.setGreen(0);
+				pixel.setBlue(0);
+			}
+		}
+	}
+
+	public void keepOnlyGreen() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				pixel.setRed(0);
+				pixel.setBlue(0);
+			}
+		}
+	}
+
 	public void keepOnlyBlue() {
 
 		Pixel[][] pixels = this.getPixels2D();
 
 		// Pixel[][] pixels = this.getPixels2D();
 		Pixel pixel = null;
+		// iterate through all rows and columns
 		for (int row = 0; row < pixels.length; row++) {
 			for (int col = 0; col < pixels[0].length; col++) {
+				// set every pixel to have 0 red and 0 green to achieve blue color
 				pixel = pixels[row][col];
 				pixel.setRed(0);
 				pixel.setGreen(0);
