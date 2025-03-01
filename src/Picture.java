@@ -162,6 +162,60 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	// this method name makes no sense.
+	public void getCountRedOverValue(int i) {
+		Pixel[][] pixels = this.getPixels2D();
+
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				if (pixel.getRed() > i) {
+					pixel.setColor(new Color(255, 255, 255));
+				} else {
+					pixel.setColor(new Color(0, 0, 0));
+				}
+			}
+		}
+	}
+
+	public void setRedToHalfValueInTopHalf() {
+		Pixel[][] pixels = this.getPixels2D();
+
+		int rowIndex = 0;
+		for (Pixel[] row : pixels) {
+			if (rowIndex > pixels.length / 2)
+				continue;
+
+			for (Pixel pixel : row) {
+				pixel.setRed(pixel.getRed() / 2);
+			}
+			rowIndex++;
+		}
+	}
+
+	public void clearBlueOverValue(int v) {
+		Pixel[][] pixels = this.getPixels2D();
+
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				if (pixel.getBlue() > v) {
+					pixel.setBlue(0);
+				}
+			}
+		}
+	}
+
+	public void fixUnderwater() {
+		Pixel[][] pixels = this.getPixels2D();
+
+		for (Pixel[] row : pixels) {
+			for (Pixel pixel : row) {
+				pixel.setBlue((int) (pixel.getBlue() / 1.8));
+				pixel.setGreen((int) (pixel.getGreen() / 1.8));
+				pixel.setRed((int) (pixel.getRed() * 1.8));
+			}
+		}
+	}
+
 	/**
 	 * Method that mirrors the picture around horizontal line that passes
 	 * through the center of the picture from left to right

@@ -22,14 +22,14 @@ public class PictureTester {
          * 
          */
         // testZeroBlue();
-        testKeepOnlyBlue();
+        // testKeepOnlyBlue();
         // testKeepOnlyRed();
         // testKeepOnlyGreen();
         // testNegate();
         // testGrayscale();
         // testEdgeDetection();
         // testFaceDetect();
-        // testFixUnderwater();
+        testFixUnderwater();
         // testMirrorVertical();
         // testMirrorTemple();
         // testMirrorArms();
@@ -146,7 +146,36 @@ public class PictureTester {
         // write this method in Picture class
         swan.grayScale();
         swan.explore();
+    }
 
+    // displays the number of pixels in the pic that have a red component
+    // greater than the specifies int.
+    private static void testGetCountRedOverValue(int i) {
+        Picture picture = new Picture("scenic.jpg").scale(0.5, 0.5);
+
+        picture.explore();
+        picture.getCountRedOverValue(i);
+        picture.explore();
+    }
+
+    // goes to each pixel in the top half and cuts the red component in half
+    // So, bottom half of pic should look normal
+    private static void testSetRedToHalfValueInTopHalf() {
+        Picture picture = new Picture("scenic.jpg").scale(0.5, 0.5);
+
+        picture.explore();
+        picture.setRedToHalfValueInTopHalf();
+        picture.explore();
+    }
+
+    // so for this one, any pixels that have blue over a certain value are set
+    // to no blue at all. Or for a different effect, have those pixels set to black.
+    private static void testClearBlueOverValue(int i) {
+        Picture picture = new Picture("scenic.jpg").scale(0.5, 0.5);
+
+        picture.explore();
+        picture.clearBlueOverValue(i);
+        picture.explore();
     }
 
     /** Method to test edgeDetection */
@@ -223,24 +252,6 @@ public class PictureTester {
         Color avg = null;
 
         return avg;
-    }
-
-    // so for this one, any pixels that have blue over a certain value are set
-    // to no blue at all. Or for a different effect, have those pixels set to black.
-    private static void testClearBlueOverValue(int i) {
-
-    }
-
-    // goes to each pixel in the top half and cuts the red component in half
-    // So, bottom half of pic should look normal
-    private static void testSetRedToHalfValueInTopHalf() {
-
-    }
-
-    // displays the number of pixels in the pic that have a red component
-    // greater than the specifies int.
-    private static void testGetCountRedOverValue(int i) {
-
     }
 
     /**
@@ -361,6 +372,8 @@ public class PictureTester {
      */
     private static void testFixUnderwater() {
         Picture pic = new Picture("water.jpg");
+        pic.explore();
+        pic.fixUnderwater();
         pic.explore();
     }
 
